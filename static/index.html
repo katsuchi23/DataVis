@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Happiness Data Visualization 2024</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="icon">🌍</span>
+                <h1>World Happiness 2024</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#visualizations" class="nav-link">Visualizations</a></li>
+                <li><a href="#insights" class="nav-link">Key Insights</a></li>
+                <li><a href="#conclusion" class="nav-link">Conclusion</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">What Makes Countries Happy?</h1>
+                <p class="hero-subtitle">A Data-Driven Journey to Discover the Factors Behind National Happiness</p>
+                <div class="research-question">
+                    <h2>Research Question:</h2>
+                    <p>What makes countries happy, and <strong>does money really buy happiness?</strong></p>
+                </div>
+                <button class="cta-button" onclick="scrollToSection('visualizations')">
+                    Explore the Data
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+        </div>
+        <div class="hero-background"></div>
+    </section>
+
+    <!-- Data Overview Section -->
+    <section id="overview" class="section section-light">
+        <div class="container">
+            <h2 class="section-title">Understanding the Data</h2>
+            <p class="section-description">
+                Our analysis uses the 2024 World Happiness Report, which surveys 156 countries 
+                across multiple dimensions of well-being and life satisfaction.
+            </p>
+            
+            <div class="data-cards">
+                <div class="data-card">
+                    <div class="card-icon">📊</div>
+                    <h3>Happiness Score</h3>
+                    <p>From Gallup World Poll surveys — the mean of citizens' answers to the "ladder of life" question</p>
+                </div>
+                <div class="data-card">
+                    <div class="card-icon">💰</div>
+                    <h3>GDP per Capita</h3>
+                    <p>Economic production per person, adjusted for purchasing power</p>
+                </div>
+                <div class="data-card">
+                    <div class="card-icon">🤝</div>
+                    <h3>Social Support</h3>
+                    <p>% who have relatives or friends they can count on in times of need</p>
+                </div>
+                <div class="data-card">
+                    <div class="card-icon">🏥</div>
+                    <h3>Life Expectancy</h3>
+                    <p>Healthy life expectancy at birth</p>
+                </div>
+                <div class="data-card">
+                    <div class="card-icon">🗽</div>
+                    <h3>Freedom</h3>
+                    <p>% satisfied with their freedom to choose what they do with their life</p>
+                </div>
+                <div class="data-card">
+                    <div class="card-icon">❤️</div>
+                    <h3>Generosity</h3>
+                    <p>Based on charity donations in the past month</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visualizations Section -->
+    <section id="visualizations" class="section">
+        <div class="container">
+            <h2 class="section-title">Interactive Visualizations</h2>
+            <p class="section-description">
+                Explore the data through multiple visualization perspectives to uncover patterns and insights.
+            </p>
+
+            <!-- Visualization Tabs -->
+            <div class="viz-tabs">
+                <button class="tab-button active" data-tab="map">🗺️ Global Map</button>
+                <button class="tab-button" data-tab="rankings">📊 Rankings</button>
+                <button class="tab-button" data-tab="correlations">🔗 Correlations</button>
+                <button class="tab-button" data-tab="factors">📈 Factors</button>
+                <button class="tab-button" data-tab="radar">🎯 Radar Chart</button>
+                <button class="tab-button" data-tab="gdp">💰 GDP Analysis</button>
+                <button class="tab-button" data-tab="diminishing">📉 Diminishing Returns</button>
+                <button class="tab-button" data-tab="bubble">🎨 Bubble Chart</button>
+                <button class="tab-button" data-tab="importance">� Factor Ranking</button>
+                <button class="tab-button" data-tab="pillars">🏛️ Four Pillars</button>
+            </div>
+
+            <!-- Visualization Content -->
+            <div class="viz-content">
+                <!-- Map Tab -->
+                <div class="viz-panel active" id="map-panel">
+                    <h3>Global Happiness Distribution</h3>
+                    <p class="viz-description">
+                        Explore happiness scores across the world. Hover over countries to see detailed information.
+                    </p>
+                    <div class="viz-container">
+                        <div id="map-viz" class="visualization-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">🗺️</span>
+                                <p>Interactive choropleth map showing global happiness distribution</p>
+                                <button class="load-viz-button" onclick="loadVisualization('map')">Load Visualization</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rankings Tab -->
+                <div class="viz-panel" id="rankings-panel">
+                    <h3>Top 10 Happiest vs Bottom 10 Countries</h3>
+                    <p class="viz-description">
+                        Compare the happiest and least happy countries in the world.
+                    </p>
+                    <div class="viz-container">
+                        <div id="rankings-viz" class="visualization-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">📊</span>
+                                <p>Side-by-side bar charts comparing top and bottom countries</p>
+                                <button class="load-viz-button" onclick="loadVisualization('rankings')">Load Visualization</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Correlations Tab -->
+                <div class="viz-panel" id="correlations-panel">
+                    <h3>Correlation Between Factors</h3>
+                    <p class="viz-description">
+                        Discover which factors are most strongly related to happiness.
+                    </p>
+                    <div class="viz-container">
+                        <div id="correlations-viz" class="visualization-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">🔗</span>
+                                <p>Heatmap showing correlations between all happiness factors</p>
+                                <button class="load-viz-button" onclick="loadVisualization('correlations')">Load Visualization</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Factors Tab -->
+                <div class="viz-panel" id="factors-panel">
+                    <h3>Factor Contributions & Comparison</h3>
+                    <p class="viz-description">
+                        See how different factors contribute to happiness in top countries and compare profiles.
+                    </p>
+                    <div class="viz-container">
+                        <div id="factors-viz" class="visualization-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">📈</span>
+                                <p>Stacked bar chart and radar chart comparing happiness factors</p>
+                                <button class="load-viz-button" onclick="loadVisualization('factors')">Load Visualization</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GDP Tab -->
+                <div class="viz-panel" id="gdp-panel">
+                    <h3>Does Money Buy Happiness?</h3>
+                    <p class="viz-description">
+                        Explore the relationship between GDP and happiness with regression analysis.
+                    </p>
+                    <div class="viz-container">
+                        <div id="gdp-viz" class="visualization-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">💰</span>
+                                <p>GDP vs happiness scatter plot with regression line</p>
+                                <button class="load-viz-button" onclick="loadVisualization('gdp')">Load Visualization</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Radar Tab -->
+                <div class="viz-panel" id="radar-panel">
+                    <h3>Profile Comparison: Happy vs Unhappy Countries</h3>
+                    <p class="viz-description">
+                        Compare the factor profiles of the happiest and least happy countries.
+                    </p>
+                    <div class="viz-container">
+                        <div id="radar-viz" class="visualization-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">🎯</span>
+                                <p>Interactive radar chart comparing country profiles</p>
+                                <button class="load-viz-button" onclick="loadVisualization('radar')">Load Visualization</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diminishing Returns Tab -->
+                <div class="viz-panel" id="diminishing-panel">
+                    <h3>Diminishing Returns of Wealth</h3>
+                    <p class="viz-description">
+                        See how happiness gains decrease as GDP increases.
+                    </p>
+                    <div class="viz-container">
+                        <div id="diminishing-viz" class="visualization-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">📉</span>
+                                <p>Bar chart showing diminishing returns by GDP category</p>
+                                <button class="load-viz-button" onclick="loadVisualization('diminishing')">Load Visualization</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bubble Chart Tab -->
+                <div class="viz-panel" id="bubble-panel">
+                    <h3>Multi-Dimensional Analysis</h3>
+                    <p class="viz-description">
+                        Explore multiple factors simultaneously in an interactive bubble chart.
+                    </p>
+                    <div class="viz-container">
+                        <div id="bubble-viz" class="visualization-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">🎨</span>
+                                <p>Interactive bubble chart with size and color encoding</p>
+                                <button class="load-viz-button" onclick="loadVisualization('bubble')">Load Visualization</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Factor Importance Tab -->
+                <div class="viz-panel" id="importance-panel">
+                    <h3>Factor Importance Ranking</h3>
+                    <p class="viz-description">
+                        See which factors have the strongest correlation with happiness.
+                    </p>
+                    <div class="viz-container">
+                        <div id="importance-viz" class="visualization-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">🔍</span>
+                                <p>Horizontal bar chart ranking all factors</p>
+                                <button class="load-viz-button" onclick="loadVisualization('importance')">Load Visualization</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Four Pillars Tab -->
+                <div class="viz-panel" id="pillars-panel">
+                    <h3>The Four Pillars of Happiness</h3>
+                    <p class="viz-description">
+                        Compare the four most important factors side by side.
+                    </p>
+                    <div class="viz-container">
+                        <div id="pillars-viz" class="visualization-placeholder">
+                            <div class="placeholder-content">
+                                <span class="placeholder-icon">🏛️</span>
+                                <p>Four-panel scatter plot comparison</p>
+                                <button class="load-viz-button" onclick="loadVisualization('pillars')">Load Visualization</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Insights Section -->
+    <section id="insights" class="section section-light">
+        <div class="container">
+            <h2 class="section-title">Key Findings</h2>
+            
+            <div class="insights-grid">
+                <div class="insight-card highlight">
+                    <div class="insight-icon">💰</div>
+                    <h3>GDP per Capita</h3>
+                    <div class="correlation-badge">r ≈ 0.78</div>
+                    <p><strong>Strong positive correlation</strong></p>
+                    <ul>
+                        <li>Money DOES matter for happiness</li>
+                        <li>Shows diminishing returns at higher levels</li>
+                        <li>Moving from poverty to security has huge impact</li>
+                    </ul>
+                </div>
+
+                <div class="insight-card highlight">
+                    <div class="insight-icon">🤝</div>
+                    <h3>Social Support</h3>
+                    <div class="correlation-badge">r ≈ 0.77</div>
+                    <p><strong>Almost as important as GDP</strong></p>
+                    <ul>
+                        <li>Having people to rely on is crucial</li>
+                        <li>Strong social safety nets matter</li>
+                        <li>Community support drives happiness</li>
+                    </ul>
+                </div>
+
+                <div class="insight-card">
+                    <div class="insight-icon">🏥</div>
+                    <h3>Life Expectancy</h3>
+                    <div class="correlation-badge">r ≈ 0.78</div>
+                    <p><strong>Critical for happiness</strong></p>
+                    <ul>
+                        <li>Longer, healthier lives correlate strongly</li>
+                        <li>Represents quality of life</li>
+                        <li>Often tied to GDP but distinct factor</li>
+                    </ul>
+                </div>
+
+                <div class="insight-card">
+                    <div class="insight-icon">🗽</div>
+                    <h3>Freedom</h3>
+                    <div class="correlation-badge">r ≈ 0.56</div>
+                    <p><strong>Significant impact</strong></p>
+                    <ul>
+                        <li>Personal autonomy matters</li>
+                        <li>Freedom to make life choices</li>
+                        <li>Lower but still important correlation</li>
+                    </ul>
+                </div>
+
+                <div class="insight-card">
+                    <div class="insight-icon">❤️</div>
+                    <h3>Generosity</h3>
+                    <div class="correlation-badge">r ≈ 0.15</div>
+                    <p><strong>Moderate impact</strong></p>
+                    <ul>
+                        <li>Charitable giving shows weaker link</li>
+                        <li>Cultural factors may influence</li>
+                        <li>Still positive correlation</li>
+                    </ul>
+                </div>
+
+                <div class="insight-card">
+                    <div class="insight-icon">⚖️</div>
+                    <h3>Low Corruption</h3>
+                    <div class="correlation-badge">r ≈ 0.43</div>
+                    <p><strong>Moderate impact</strong></p>
+                    <ul>
+                        <li>Trust in institutions matters</li>
+                        <li>Less corruption, more happiness</li>
+                        <li>Governance quality is important</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion Section -->
+    <section id="conclusion" class="section conclusion-section">
+        <div class="container">
+            <h2 class="section-title">💰 Does Money Really Buy Happiness?</h2>
+            
+            <div class="conclusion-box">
+                <h3 class="answer-title">The Answer: Yes, BUT with important caveats</h3>
+                
+                <div class="conclusion-grid">
+                    <div class="conclusion-card positive">
+                        <h4>✅ Money DOES Buy Happiness When:</h4>
+                        <ul>
+                            <li>Moving from poverty to basic economic security (biggest impact)</li>
+                            <li>Combined with strong social support systems</li>
+                            <li>Used to improve health and life expectancy</li>
+                            <li>Enables personal freedom and choices</li>
+                        </ul>
+                    </div>
+
+                    <div class="conclusion-card warning">
+                        <h4>⚠️ Money Alone is NOT Enough Because:</h4>
+                        <ul>
+                            <li>Diminishing returns beyond moderate wealth</li>
+                            <li>Social support matters almost as much as GDP</li>
+                            <li>Countries with similar GDP can have very different happiness scores</li>
+                            <li>The HOW matters: distribution, social programs, community support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="final-insight">
+                    <h4>🎯 The Real Story</h4>
+                    <p>
+                        Happiness is <strong>multi-dimensional</strong>. The happiest countries (Nordic countries) combine:
+                    </p>
+                    <div class="pillars">
+                        <span class="pillar">Adequate wealth (GDP)</span>
+                        <span class="pillar">Strong social safety nets</span>
+                        <span class="pillar">Healthy populations</span>
+                        <span class="pillar">Personal freedoms</span>
+                        <span class="pillar">Low corruption</span>
+                        <span class="pillar">Generous, trusting societies</span>
+                    </div>
+                    <p class="conclusion-statement">
+                        <strong>Money provides the foundation, but social factors build the house of happiness!</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 World Happiness Data Visualization Project</p>
+            <p>Data Source: World Happiness Report 2024 | Built with ❤️ for data visualization</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
