@@ -12,7 +12,7 @@ from pathlib import Path
 
 # Configuration
 PORT = 8000
-DIRECTORY = Path(__file__).parent / "static"
+DIRECTORY = Path(__file__).parent  # Serve from root directory for GitHub Pages compatibility
 
 class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
